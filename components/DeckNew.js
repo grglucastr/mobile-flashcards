@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Button, View, StyleSheet, Text, TextInput } from 'react-native'
 
+import {submitNewDeck  } from '../utils/api'
+
 
 class DeckNew extends Component {
 
@@ -15,7 +17,9 @@ class DeckNew extends Component {
   onSubmit() {
   
     const { title } = this.state
-    const titleKey = title.replace(" ", "")
+    const key = title.replace(" ", "")
+
+    submitNewDeck({key, title})
 
   }
 
