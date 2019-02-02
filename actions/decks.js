@@ -30,11 +30,11 @@ export function handleListDecks() {
 
 export function handleAddNewDeck(deck){
   return (dispatch) => {
+    dispatch(addNewDeck(deck)) 
     saveNewDeck(deck)
       .then((newDeck) => {
-        alert('Deck added!')
-        dispatch(addNewDeck(newDeck) 
-      )})
+        alert('Deck added!')  
+      })
       .catch((error) => alert('An error occurred while trying to add new Deck. Please try again.'))
   }
 }

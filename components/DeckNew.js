@@ -12,18 +12,10 @@ class DeckNew extends Component {
   }
 
   onSubmit() {
-  
     const { title } = this.state
     const key = title.replace(" ", "")
     this.props.dispatch(handleAddNewDeck({key, title}))
-
-    // Redirect to DeckItem
-  }
-
-  onTitleChange(e) {
-    console.log(e);
-    this.set
-    
+    this.props.navigation.navigate('DeckList');
   }
 
   render() {
@@ -42,7 +34,6 @@ class DeckNew extends Component {
           style={styles.btnAddDeck}
           onPress={() => this.onSubmit()}
         />
-        
       </View>
     )
   }

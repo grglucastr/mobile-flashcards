@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, ScrollView, Text} from 'react-native'
+import {View, ScrollView} from 'react-native'
 import { connect } from 'react-redux'
 import { handleListDecks } from '../actions/decks'
 
@@ -27,9 +27,8 @@ class DeckList extends React.Component {
   }
 }
 
-
 function mapStateToProps(state) {  
-  const { decks } = state
+  const { decks } = state  
   return { decks }
 }
 

@@ -6,8 +6,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
 import decks from './reducers/decks'
-import DeckNew from './components/DeckNew'
-import DeckList from './components/DeckList'
+import DeckTabNavigation from './components/DeckTabNavigation'
 
 const appStore = createStore(combineReducers({decks}),  applyMiddleware(thunk))
 
@@ -16,9 +15,7 @@ class App extends React.Component {
   render () {
     return(
       <Provider store={appStore}>
-        <View style={styles.viewContainer}>
-          <DeckList />
-        </View>
+        <DeckTabNavigation />
       </Provider>
     )
   }
