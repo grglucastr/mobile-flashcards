@@ -1,23 +1,34 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { Constants } from 'expo'
-import { createMaterialTopTabNavigator, createAppContainer } from 'react-navigation'
+import { StyleSheet, View } from 'react-native'
 
+import { combineReducers, createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
 
-import DeckNew from './components/DeckNew'
+import decks from './reducers/decks'
 import DeckList from './components/DeckList'
 
-const TabConfig = {
-  tabBarOptions: {
-    tabStyle: {
-      marginTop: Constants.statusBarHeight
-    }
+const appStore = createStore(combineReducers({decks}),  applyMiddleware(thunk))
+
+class App extends React.Component {
+
+  render () {
+    return(
+      <Provider store={appStore}>
+        <View style={styles.viewContainer}>
+          <DeckList />
+        </View>
+      </Provider>
+    )
   }
 }
 
-const TabNavigator = createMaterialTopTabNavigator({
-  Home: DeckList,
-  AddNewDeck: DeckNew
-}, TabConfig)
+const styles = StyleSheet.create({
+  viewContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+})
 
-export default createAppContainer (TabNavigator)
+export default App
