@@ -23,7 +23,7 @@ You will also see any lint errors in the console.
 For this project I am using AsyncStorage, so everything is stored local
 
 ```sh
-/src/util/api.js
+/utils/api.js
 ```
 
 
