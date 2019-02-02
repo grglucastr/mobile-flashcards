@@ -2,31 +2,67 @@ import React from 'react'
 import { View, StyleSheet} from 'react-native'
 import { Text, Button } from 'react-native-elements'
 
-export default function QuizCard({cardIdx, card, onAnswer}){
-  return (
-    <View style={{flex: 1, justifyContent: 'space-around'}}>
-      <Text h4> ({cardIdx}) -  {card.question} </Text>
-      <Text> View Answer </Text>
+export default class QuizCard extends React.Component { 
 
-      <Button
-        style={styles.btn}
-        onPress={() => onAnswer(cardIdx)}
-        title="Correct"
-      />
+  state = {
+    showAnswer: false,
+    buttonTitle: 'View Answer'
+  }
 
-      <Button
-        style={styles.btn}
-        onPress={() => onAnswer(cardIdx)}
-        title="Incorrect"
-      />
-      
-    </View>
-  )
+  onViewAnswer(){
+    this.setState((state) => ({
+      showAnswer: !state.showAnswer,
+      buttonTitle: !state.showAnswer ? 'Hide Answer' : 'View Answer'
+    }))
+  }
+
+  render() {
+
+    const { cardIdx, card, onAnswer } = this.props
+
+    return (
+      <View style={{flex: 1, justifyContent: 'center'}}>
+        <Text h4> {card.question} </Text>
+        
+        {
+          this.state.showAnswer && (<Text style={{textAlign: 'center'}}>
+          {card.answer}
+        </Text>)
+        }
+        
+
+        <View style={{marginTop: 50, marginBottom: 90}}>
+          <Button    
+            onPress={() => this.onViewAnswer()}
+            title={this.state.buttonTitle}
+            type="clear"
+            />
+        </View>
+
+        <Button          
+          onPress={() => onAnswer(cardIdx)}
+          title="Correct"
+          buttonStyle={styles.btn}
+        />
+
+        <Button
+          buttonStyle={[styles.btn, styles.btnIncorrect]}
+          onPress={() => onAnswer(cardIdx)}
+          title="Incorrect"
+        />
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
   btn: {
     marginTop: 10,
-    marginBottom: 60
+    marginBottom: 60,
+    width: '100%'
   },
+
+  btnIncorrect: {
+    backgroundColor: 'red'
+  }
 })

@@ -2,22 +2,28 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Button,  Text} from 'react-native-elements'
 
+export default class QuizEnd extends React.Component {
+  static navigationOptions = {
+    title: 'Quiz is Done!',
+    headerLeft: null
+  }
 
-export default function QuizEnd(props) {
-  return(
-    <View style={styles.container}>
-      <Text 
-        h4
-        style={styles.text}>
-        FIM DE PAPO!!!!
-      </Text>
-      <Button
-        onPress={() => props.navigation.navigate('DeckList')}
-        style={styles.btn}
-        title="DECK LISTS"
-      />
-    </View>
-  )
+  render(){
+    return(
+      <View style={styles.container}>
+        <Text 
+          h4
+          style={styles.text}>
+          FIM DE PAPO!!!!
+        </Text>
+        <Button
+          onPress={() => this.props.navigation.navigate('DeckList')}
+          style={styles.btn}
+          title="DECK LISTS"
+        />
+      </View>
+    )  
+  }
 }
 
 const styles = StyleSheet.create({
