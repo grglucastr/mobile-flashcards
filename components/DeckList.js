@@ -15,7 +15,7 @@ class DeckList extends React.Component {
     const { decks } = this.props  
     return (
       <ScrollView>        
-        <View>
+        <View style={{marginBottom: 10}}>
         {
           Object.keys(decks).map((deck) => (
             <DeckListItem key={deck} deckId={deck} title={decks[deck]} />
