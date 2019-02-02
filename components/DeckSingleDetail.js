@@ -44,6 +44,8 @@ class DeckSingleDetail extends React.Component {
             title="Add Cards"/>
 
           <Button
+            disabled={deck.questions.length === 0}
+            onPress={() => this.props.navigation.navigate('Quiz', {deckId})}
             title="Start Quiz"/>
         </View>
       </View>
