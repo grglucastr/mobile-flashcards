@@ -21,7 +21,7 @@ export default class QuizCard extends React.Component {
     const { cardIdx, card, onAnswer } = this.props
 
     return (
-      <View style={{flex: 1, justifyContent: 'center'}}>
+      <View style={{flex: 1, justifyContent: 'center', alignContent:'center'}}>
         <Text h4> {card.question} </Text>
         
         {
@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
   btn: {
     marginTop: 10,
     marginBottom: 60,
-    width: '100%'
   },
 
   btnIncorrect: {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {View, TextInput, StyleSheet} from 'react-native'
-import { Text, Button } from 'react-native-elements'
+import { Text, Button, CheckBox } from 'react-native-elements'
 import { handleUpdateDeckCards } from '../actions/decks'
 
 class CardNew extends React.Component {
@@ -13,6 +13,7 @@ class CardNew extends React.Component {
   state = {
     question: '',
     answer:'',
+    isCorrect: false,
   }
 
   submitCard(){
@@ -25,7 +26,7 @@ class CardNew extends React.Component {
       [deckId]:deck
     }
     
-    this.setState({question:'', answer: ''})
+    this.setState({question:'', answer: '',  isCorrect: false,})
     this.props.dispatch(handleUpdateDeckCards(newDeck))
     navigation.navigate('DeckSingleDetail', {deckId})
     
@@ -50,7 +51,16 @@ class CardNew extends React.Component {
           value={this.state.answer}
           style={styles.textInput}
           onChangeText={(answer) => this.setState({answer})}
-          placeholder="Insert card's answer here"/>
+          placeholder="Insert card's answer description"/>
+        
+        <View style={styles.chckBox}>
+          <CheckBox
+            center
+            title='Check me if this question is correct'
+            checked={this.state.isCorrect}
+            onPress={() =>  this.setState(state => ({isCorrect: !state.isCorrect})) }
+          />
+        </View>
 
         <Button
           onPress={() => this.submitCard()}
@@ -71,9 +81,13 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
 
+  chckBox: {
+    marginBottom: 20,
+  },
+
   btnAddDeck:{
     marginTop: 20
-  }
+  },
 })
 
 function mapStateToProps({decks}, props){

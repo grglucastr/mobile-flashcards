@@ -6,7 +6,8 @@ import QuizCard from './QuizCard'
 class Quiz extends React.Component {
 
   static navigationOptions = {
-    title: `Quiz`
+    title: 'Quiz in Progress...',
+    headerLeft: null
   }
 
   state = {
@@ -21,19 +22,14 @@ class Quiz extends React.Component {
     const cardIdx = currentIdx + 1;
 
     if(cardIdx <= limit){
-      console.log("next questions");
       this.setState((state) => ({
         cardIdx,
         card: state.cards[cardIdx]
       }))
 
     }else{
-      console.log("fim de papo");
       this.props.navigation.navigate('QuizEnd')
-      
     }
-    
-
   }
 
   render() {
