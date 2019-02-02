@@ -41,14 +41,14 @@ export default class QuizCard extends React.Component {
         </View>
 
         <Button          
-          onPress={() => onAnswer(cardIdx)}
+          onPress={() => onAnswer(cardIdx, isCorrect=true)}
           title="Correct"
           buttonStyle={styles.btn}
         />
 
         <Button
           buttonStyle={[styles.btn, styles.btnIncorrect]}
-          onPress={() => onAnswer(cardIdx)}
+          onPress={() => onAnswer(cardIdx, isCorrect=false)}
           title="Incorrect"
         />
       </View>

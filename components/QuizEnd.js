@@ -14,7 +14,7 @@ export default class QuizEnd extends React.Component {
         <Text 
           h4
           style={styles.text}>
-          FIM DE PAPO!!!!
+          Done! Your percentage correct: {this.props.navigation.getParam('percent')}%
         </Text>
         <Button
           onPress={() => this.props.navigation.navigate('DeckList')}

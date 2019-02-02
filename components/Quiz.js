@@ -12,24 +12,35 @@ class Quiz extends React.Component {
   }
 
   state = {
+    score: 0,
     cardIdx: 0,
     card: this.props.questions[0],
     cards: this.props.questions
   }
 
-  getNextQuestion(currentIdx){    
-
+  getNextQuestion(currentIdx, userAnswer){    
+    
     const limit = this.state.cards.length - 1;
     const cardIdx = currentIdx + 1;
-
+    
+    let { score } = this.state
+    if(eval(userAnswer) === (this.state.card.isCorrect)){
+      score++
+    }
+ 
     if(cardIdx <= limit){
       this.setState((state) => ({
+        score,
         cardIdx,
         card: state.cards[cardIdx]
       }))
 
+      
+
     }else{
-      this.props.navigation.navigate('QuizEnd')
+
+      const percent = (score * 100 / this.state.cards.length).toFixed(0)      
+      this.props.navigation.navigate('QuizEnd', {score, percent})
     }
   }
 
@@ -43,7 +54,7 @@ class Quiz extends React.Component {
         <QuizCard 
           cardIdx={cardIdx}
           card={card}
-          onAnswer={(cardIdx) => this.getNextQuestion(cardIdx)} />
+          onAnswer={(cardIdx, userAnswer) => this.getNextQuestion(cardIdx, userAnswer)} />
       </View>
     )  
   }
@@ -52,6 +63,9 @@ class Quiz extends React.Component {
 function mapStateToProps({decks}, props){
   const deckId = props.navigation.getParam('deckId')
   const questions = decks[deckId].questions
+
+  console.log('questions', questions);
+  
 
   return {
     questions
