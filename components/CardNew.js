@@ -43,6 +43,7 @@ class CardNew extends React.Component {
 
         <Button
           onPress={() => this.submitCard()}
+          disabled={this.state.question === '' || this.state.answer === ''}
           title="Submit"/>
       </View>
     )

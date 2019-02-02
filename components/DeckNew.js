@@ -32,6 +32,7 @@ class DeckNew extends Component {
 
         <Button
           title="Add Deck"
+          disabled={this.state.title === ''}
           style={styles.btnAddDeck}
           onPress={() => this.onSubmit()}
         />
