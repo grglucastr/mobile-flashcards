@@ -6,10 +6,8 @@ import { handleUpdateDeckCards } from '../actions/decks'
 
 class CardNew extends React.Component {
   
-  static navigationOptions = ({navigation}) => {
-    return {
-      title: `New Card`
-    }
+  static navigationOptions = {
+    title: `New Card`
   }
 
   state = {
