@@ -7,10 +7,6 @@ import { handleAddNewDeck } from '../actions/decks'
 
 class DeckNew extends Component {
 
-  static navigationOptions = {
-    title: 'Add Deck'
-  }
-
   state = {
     title: ''
   }
