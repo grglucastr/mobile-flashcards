@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Text} from 'react-native'
+import { View,} from 'react-native'
+import { Text } from 'react-native-elements'
 import { connect } from 'react-redux'
 import QuizCard from './QuizCard'
 
@@ -38,6 +39,7 @@ class Quiz extends React.Component {
 
     return (
       <View style={{flex:1, alignItems: 'center'}}>
+        <Text h4>{(cardIdx + 1)} / {this.state.cards.length}</Text>
         <QuizCard 
           cardIdx={cardIdx}
           card={card}

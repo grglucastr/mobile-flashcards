@@ -25,9 +25,10 @@ export default class QuizCard extends React.Component {
         <Text h4> {card.question} </Text>
         
         {
-          this.state.showAnswer && (<Text style={{textAlign: 'center'}}>
-          {card.answer}
-        </Text>)
+          this.state.showAnswer && 
+          (
+            <Text style={{textAlign: 'center'}}>{card.answer}</Text>
+          )
         }
         
 
