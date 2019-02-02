@@ -7,9 +7,15 @@ import thunk from 'redux-thunk'
 import decks from './reducers/decks'
 import Home from './components/Home'
 
+import {clearAll} from './utils/api'
+
 const appStore = createStore(combineReducers({decks}),  applyMiddleware(thunk))
 
 class App extends React.Component {
+
+  componentDidMount() {
+    //clearAll()
+  }
 
   render () {
     return(

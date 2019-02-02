@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, ScrollView} from 'react-native'
+import {View, ScrollView, Text} from 'react-native'
 import { connect } from 'react-redux'
 import { handleListDecks } from '../actions/decks'
 
@@ -17,7 +17,7 @@ class DeckList extends React.Component {
         <View style={{marginBottom: 10}}>
         {
           Object.keys(decks).map((deck) => (
-            <DeckListItem key={deck} navigation={this.props.navigation} deckId={deck} title={decks[deck]} />
+            <DeckListItem key={deck} navigation={this.props.navigation} deck={decks[deck]} />
           ))
         }
         </View>

@@ -1,4 +1,3 @@
-import DeckList from './DeckList'
 
 import  DeckTabNavigation from './DeckTabNavigation' 
 import DeckSingleDetail from './DeckSingleDetail'

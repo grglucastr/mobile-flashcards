@@ -24,7 +24,7 @@ export function handleListDecks() {
   return (dispatch) => { 
     fetchAllDecks().then((decks) => { 
       dispatch(listDecks(decks))
-    }).catch(error => console.error(error) )
+    }).catch(error => console.error(error))
   }
 }
 
@@ -32,9 +32,6 @@ export function handleAddNewDeck(deck){
   return (dispatch) => {
     dispatch(addNewDeck(deck)) 
     saveNewDeck(deck)
-      .then((newDeck) => {
-        alert('Deck added!')  
-      })
       .catch((error) => alert('An error occurred while trying to add new Deck. Please try again.'))
   }
 }

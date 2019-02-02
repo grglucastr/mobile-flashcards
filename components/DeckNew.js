@@ -13,10 +13,22 @@ class DeckNew extends Component {
 
   onSubmit() {
     const { title } = this.state
-    const key = title.replace(" ", "")
-    this.props.dispatch(handleAddNewDeck({key, title}))
+    const key = title.replace(/\s/g, '');
+
+    const deckObj = {
+      [key]: {
+        title,
+        questions:[]
+      }
+    } 
+
+    //console.log('before you go ---> ', deckObj);
+    
+    
+    this.props.dispatch(handleAddNewDeck(deckObj))
     this.setState({title: ''})
     this.props.navigation.navigate('DeckSingleDetail', {title});
+    
   }
 
   render() {
