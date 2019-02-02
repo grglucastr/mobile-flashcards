@@ -2,6 +2,7 @@ import DeckList from './DeckList'
 
 import  DeckTabNavigation from './DeckTabNavigation' 
 import DeckSingleDetail from './DeckSingleDetail'
+import CardNew from './CardNew'
 
 import { createStackNavigator, createAppContainer } from 'react-navigation'
 
@@ -13,7 +14,8 @@ const AppNavigator = createStackNavigator(
       title: 'FlashCards',
     }
   },
-  DeckSingleDetail:DeckSingleDetail
+  DeckSingleDetail: DeckSingleDetail,
+  CardNew: CardNew
 },
 {
   initialRouteName: "Home",

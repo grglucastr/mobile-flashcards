@@ -19,18 +19,21 @@ class DeckSingleDetail extends React.Component {
   }
 
   render(){
+
+    const { navigation } = this.props
+    const title = navigation.getParam('title')
+
     return (
       <View style={styles.container}>
-        <Text h4 style={styles.textCenter}>
-          {this.props.navigation.getParam('title')}
-        </Text>
+        <Text h4 style={styles.textCenter}> { title } </Text>
 
         <View style={{margin: 10}}>
           <Text style={styles.textCenter} >0 Cards</Text>
         </View>
 
         <View style={styles.buttonContainer}>
-          <Button 
+          <Button
+            onPress={() => this.props.navigation.navigate('CardNew', {deckTitle: title})} 
             title="Add Cards"/>
 
           <Button
