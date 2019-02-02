@@ -1,12 +1,14 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import {View, TextInput, StyleSheet} from 'react-native'
 import { Text, Button } from 'react-native-elements'
+import { handleUpdateDeckCards } from '../actions/decks'
 
 class CardNew extends React.Component {
   
   static navigationOptions = ({navigation}) => {
     return {
-      title: `New Card for ${navigation.getParam('deckTitle')}`
+      title: `New Card`
     }
   }
 
@@ -16,7 +18,18 @@ class CardNew extends React.Component {
   }
 
   submitCard(){
-    console.log('come on state', this.state);
+    const { navigation } = this.props
+    const deckId = navigation.getParam('deckId')
+    const {deck} = this.props
+
+    deck.questions.push(this.state)
+    const newDeck = {
+      [deckId]:deck
+    }
+    
+    this.setState({question:'', answer: ''})
+    this.props.dispatch(handleUpdateDeckCards(newDeck))
+    navigation.navigate('DeckSingleDetail', {deckId})
     
   }
 
@@ -65,4 +78,13 @@ const styles = StyleSheet.create({
   }
 })
 
-export default CardNew
+function mapStateToProps({decks}, props){
+  const deckId = props.navigation.getParam('deckId')
+  const deck = decks[deckId]
+
+  return {
+    deck
+  }
+}
+
+export default connect(mapStateToProps)(CardNew)

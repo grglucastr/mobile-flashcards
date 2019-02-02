@@ -1,6 +1,7 @@
 import { 
   LIST_DECKS,
   ADD_NEW_DECK,
+  UPDATE_DECK_CARDS,
 } from '../actions/decks'
 
 export default function decks( state = {}, action ){
@@ -18,6 +19,12 @@ export default function decks( state = {}, action ){
         ...action.deck
       }
     
+    case UPDATE_DECK_CARDS:     
+      return {
+        ...state, 
+        ...action.deck
+      }
+
     default:
       return state
   }

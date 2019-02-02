@@ -17,7 +17,11 @@ class DeckList extends React.Component {
         <View style={{marginBottom: 10}}>
         {
           Object.keys(decks).map((deck) => (
-            <DeckListItem key={deck} navigation={this.props.navigation} deck={decks[deck]} />
+            <DeckListItem 
+              key={deck} 
+              navigation={this.props.navigation} 
+              deckId={deck}
+            />
           ))
         }
         </View>

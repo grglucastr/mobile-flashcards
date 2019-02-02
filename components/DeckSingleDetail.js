@@ -1,40 +1,46 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import { View, StyleSheet } from 'react-native'
 import { Text, Button } from 'react-native-elements'
 import { HeaderBackButton } from 'react-navigation'
+import { handleListDecks } from '../actions/decks'
 
 class DeckSingleDetail extends React.Component { 
 
   static navigationOptions = ({navigation}) => {
-    const deck = navigation.getParam('deck')
     return {
-      title: deck.title,
+      title: 'Deck Details',
       headerLeft: (
         <HeaderBackButton
-          onPress={() => navigation.navigate('DeckList')}
+          onPress={() => navigation.navigate('DeckList')} 
           color="#fff"
         />
       ),
     }
   }
 
+  componentWillUnmount(){
+    this.props.loadAllDecks()
+  }
+
   render(){
 
-    const { navigation } = this.props
-    const deck = navigation.getParam('deck')
+    const { navigation, deck} = this.props
+    const deckId = navigation.getParam('deckId')
+       
 
     return (
       <View style={styles.container}>
         <Text h4 style={styles.textCenter}> { deck.title } </Text>
 
         <View style={{margin: 10}}>
-          <Text style={styles.textCenter} > {deck.questions.length} Cards</Text>
+          <Text style={styles.textCenter}> {deck.questions.length} Cards</Text>
         </View>
 
         <View style={styles.buttonContainer}>
           <Button
-            onPress={() => this.props.navigation.navigate('CardNew', {deckTitle: deck.title})} 
+            onPress={() => this.props.navigation.navigate('CardNew', {deckId})} 
             title="Add Cards"/>
 
           <Button
@@ -61,4 +67,21 @@ const styles = StyleSheet.create({
   },
 })
 
-export default DeckSingleDetail
+function mapDispatchToProps( dispatch ){
+  return {
+    loadAllDecks: function(){
+      return dispatch(handleListDecks())
+    }
+  }
+}
+
+function mapStateToProps({decks}, props){
+  const deckId = props.navigation.getParam('deckId')
+  const deck = decks[deckId]
+
+  return {
+    deck
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeckSingleDetail)

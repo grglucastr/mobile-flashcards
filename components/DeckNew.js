@@ -21,13 +21,10 @@ class DeckNew extends Component {
         questions:[]
       }
     } 
-
-    //console.log('before you go ---> ', deckObj);
-    
     
     this.props.dispatch(handleAddNewDeck(deckObj))
     this.setState({title: ''})
-    this.props.navigation.navigate('DeckSingleDetail', {title});
+    this.props.navigation.navigate('DeckSingleDetail', {deckId: key});
     
   }
 
