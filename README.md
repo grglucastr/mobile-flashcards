@@ -7,7 +7,7 @@ This is an open source project, you can contribute to it if you want
 This is a QUIZ APP project. It allows you to add quizes and answer them.
 Assuming you have NodeJS installed on your PC, in the project directory, you can run:
 
-Please, make sure you have [https://expo.io/](EXPO) installed too
+Please, make sure you have [EXPO](https://expo.io/) installed too
 
 ### `npm install`
 This command will download all the libraries necessary to run this project
