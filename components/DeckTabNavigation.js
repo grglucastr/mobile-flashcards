@@ -4,8 +4,18 @@ import DeckList from './DeckList'
 import DeckNew from './DeckNew'
 
 const DeckTabNavigation = createMaterialTopTabNavigator({
-  DeckList: DeckList,
-  DeckNew: DeckNew
+  DeckList: {
+    screen:DeckList, 
+    navigationOptions:{
+      title: 'Deck List'
+    }
+  },
+  DeckNew: {
+    screen: DeckNew, 
+    navigationOptions: {
+      title: 'Add Deck'
+    }
+  } 
 })
 
 
