@@ -19,6 +19,7 @@ class DeckNew extends Component {
     const { title } = this.state
     const key = title.replace(" ", "")
     this.props.dispatch(handleAddNewDeck({key, title}))
+    this.setState({title: ''})
     this.props.navigation.navigate('DeckList');
   }
 
