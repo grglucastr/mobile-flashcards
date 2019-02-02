@@ -1,8 +1,10 @@
 import { 
-  fetchAllDecks
+  fetchAllDecks,
+  saveNewDeck,
  } from '../utils/api'
 
 export const LIST_DECKS = 'LIST_DECKS'
+export const ADD_NEW_DECK = 'ADD_NEW_DECK'
 
 function listDecks(decks){
   return {
@@ -11,10 +13,28 @@ function listDecks(decks){
   }
 }
 
+function addNewDeck(deck){
+  return {
+    type: ADD_NEW_DECK,
+    deck
+  }
+}
+
 export function handleListDecks() {
   return (dispatch) => { 
     fetchAllDecks().then((decks) => { 
       dispatch(listDecks(decks))
     }).catch(error => console.error(error) )
+  }
+}
+
+export function handleAddNewDeck(deck){
+  return (dispatch) => {
+    saveNewDeck(deck)
+      .then((newDeck) => {
+        alert('Deck added!')
+        dispatch(addNewDeck(newDeck) 
+      )})
+      .catch((error) => alert('An error occurred while trying to add new Deck. Please try again.'))
   }
 }

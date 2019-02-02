@@ -1,4 +1,7 @@
-import { LIST_DECKS } from '../actions/decks'
+import { 
+  LIST_DECKS,
+  ADD_NEW_DECK,
+} from '../actions/decks'
 
 export default function decks( state = {}, action ){
   
@@ -8,6 +11,13 @@ export default function decks( state = {}, action ){
         ...state,
         ...action.decks
       }
+
+    case ADD_NEW_DECK:
+      return {
+        ...state,
+        ...action.deck
+      }
+    
     default:
       return state
   }

@@ -3,7 +3,7 @@ import {View, ScrollView, Text} from 'react-native'
 import { connect } from 'react-redux'
 import { handleListDecks } from '../actions/decks'
 
-import DeckItem from './DeckItem'
+import DeckListItem from './DeckListItem'
 
 class DeckList extends React.Component {
 
@@ -18,7 +18,7 @@ class DeckList extends React.Component {
         <View>
         {
           Object.keys(decks).map((deck) => (
-            <DeckItem key={deck} />
+            <DeckListItem key={deck} deckId={deck} title={decks[deck]} />
           ))
         }
         </View>

@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
-import { Button, View, StyleSheet, Text, TextInput } from 'react-native'
+import { connect } from 'react-redux'
+import { View, StyleSheet, TextInput } from 'react-native'
+import { Button, Text } from 'react-native-elements'
 
-import {submitNewDeck  } from '../utils/api'
-
+import { handleAddNewDeck } from '../actions/decks'
 
 class DeckNew extends Component {
-
-  static navigationOptions  ={ 
-    tabBarLabel: 'New Deck'
-  }
 
   state = {
     title: ''
@@ -18,28 +15,34 @@ class DeckNew extends Component {
   
     const { title } = this.state
     const key = title.replace(" ", "")
+    this.props.dispatch(handleAddNewDeck({key, title}))
 
-    submitNewDeck({key, title})
-
+    // Redirect to DeckItem
   }
 
-  
+  onTitleChange(e) {
+    console.log(e);
+    this.set
+    
+  }
 
   render() {
     return (
-      <View style={{flex: 1, alignItems:'center', justifyContent:'center'}}>
-        <Text>What is the title of your new Deck?</Text>
-        <TextInput 
+      <View >
+        <Text h4>Add New Deck</Text>
+        <TextInput
+          name="title"
+          value={this.state.title}
           style={styles.textInput}
           onChangeText={(title) => this.setState({title})}
-          value={this.state.title} />
+          placeholder="Insert new Deck's title here"/>
 
         <Button
+          title="Add Deck"
+          style={styles.btnAddDeck}
           onPress={() => this.onSubmit()}
-          title="Submit"
-          style={styles.submitButton}          
-          accessibilityLabel="Save Deck"/>
-          
+        />
+        
       </View>
     )
   }
@@ -50,13 +53,13 @@ const styles = StyleSheet.create({
     height: 40, 
     borderColor: 'gray',
     borderBottomWidth: 1, 
-    width:'90%',
+    marginBottom: 20,
   },
 
-  submitButton:{
-    color:"#841584"
+  btnAddDeck:{
+    marginTop: 20
   }
 })
 
 
-export default DeckNew
+export default connect()(DeckNew)
