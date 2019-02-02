@@ -1,7 +1,9 @@
 
-import  DeckTabNavigation from './DeckTabNavigation' 
+import DeckTabNavigation from './DeckTabNavigation' 
 import DeckSingleDetail from './DeckSingleDetail'
 import CardNew from './CardNew'
+import Quiz from './Quiz'
+import QuizEnd from './QuizEnd'
 
 import { createStackNavigator, createAppContainer } from 'react-navigation'
 
@@ -14,7 +16,9 @@ const AppNavigator = createStackNavigator(
     }
   },
   DeckSingleDetail: DeckSingleDetail,
-  CardNew: CardNew
+  CardNew: CardNew,
+  Quiz: Quiz,
+  QuizEnd: QuizEnd
 },
 {
   initialRouteName: "Home",
