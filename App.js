@@ -1,14 +1,11 @@
 import React from 'react'
-import { StyleSheet, View} from 'react-native'
 
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
 import decks from './reducers/decks'
-import DeckTabNavigation from './components/DeckTabNavigation'
-
-import { Constants } from 'expo'
+import Home from './components/Home'
 
 const appStore = createStore(combineReducers({decks}),  applyMiddleware(thunk))
 
@@ -17,19 +14,10 @@ class App extends React.Component {
   render () {
     return(
       <Provider store={appStore}>
-        <View style={{height: Constants.statusBarHeight }} ></View>
-        <DeckTabNavigation style={{height: Constants.statusBarHeight }} />
+        <Home />
       </Provider>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  viewContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-})
 
 export default App

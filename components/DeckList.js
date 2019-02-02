@@ -6,7 +6,6 @@ import { handleListDecks } from '../actions/decks'
 import DeckListItem from './DeckListItem'
 
 class DeckList extends React.Component {
-
   componentDidMount(){
     this.props.dispatch(handleListDecks())
   }
