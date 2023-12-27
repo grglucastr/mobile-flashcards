@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://isar.dev">
-    <img src="https://raw.githubusercontent.com/isar/isar/main/.github/assets/isar.svg?sanitize=true" height="128">
+    <img src="https://github.com/grglucastr/grorange/blob/main/images/app-logo.png" height="128">
   </a>
-  <h1 align="center">Isar Database</h1>
+  <h1 align="center">Grorange</h1>
 </p>
